@@ -38,7 +38,7 @@ function get(id) {
 function insert(project) {
   return db('projects')
     .insert(project)
-    .then(([id]) => this.get(id));
+    .then(([id]) => this.get(id), project);
 }
 
 function update(id, changes) {
