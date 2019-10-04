@@ -11,17 +11,24 @@ router.post('/:id', (req, res) => {
 })
 // Read - get
 router.get('/:id', (req, res) => {
-    const id = req.params.id;
+    const id = req.params.project_id;
     Actions.get(id).then(act => {
         res.status(200).json(act)
     })
 })
 // Update - put
-router.put('/', (req, res) => {
-
+router.put('/:id', (req, res) => {
+    const id = req.params.id;
+    const changes = req.body;
+    Actions.get(id).then(oldAct => {
+        Actions.update(id, changes).then(act => {
+            res.status(200).json(act)
+        })
+    })
+    
 })
 // Delete - delete
 router.delete('/id', (req, res) => {
-
+    
 })
 module.exports = router;
