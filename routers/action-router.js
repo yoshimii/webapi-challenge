@@ -11,7 +11,7 @@ router.post('/:id', (req, res) => {
 })
 // Read - get
 router.get('/:id', (req, res) => {
-    const id = req.params.project_id;
+    const id = req.params.id;
     Actions.get(id).then(act => {
         res.status(200).json(act)
     })
