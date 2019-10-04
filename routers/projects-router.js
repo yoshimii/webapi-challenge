@@ -9,7 +9,14 @@ router.post('/', (req, res) => {
     })
 })
 
-// Read - get
+// Read - get all projects
+router.get('/', (req, res) => {
+    Projects.get().then(list => {
+        res.status(200).json(list)
+    })
+})
+
+// Read - get by id
 router.get('/:id', (req, res) => {
     id = req.params.id;
     Projects.get(id).then(project => {
@@ -21,7 +28,7 @@ router.put('/:id', (req, res) => {
     const id = req.params.id;
     const changes = req.body;
     Projects.get(id).then((old) => {
-        console.log(id, project)
+      
         Projects.update(id, changes).then(proj => {
             res.status(200).json({ updatedTo: proj, was: old })
         })

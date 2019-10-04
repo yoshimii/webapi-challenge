@@ -16,14 +16,22 @@ router.post('/:id', async (req, res) => {
 
 })
 
+// Read - get all actions
+router.get('/', (req, res) => {
+    Actions.get().then(act => {
+        res.status(200).json(act)
+    })
+})
 
-// Read - get
+// Read - get by id
 router.get('/:id', (req, res) => {
     const id = req.params.id;
     Actions.get(id).then(act => {
         res.status(200).json(act)
     })
 })
+
+router
 // Update - put
 router.put('/:id', (req, res) => {
     const id = req.params.id;
