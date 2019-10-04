@@ -3,8 +3,11 @@ const router = express.Router();
 const Actions = require('.././data/helpers/actionModel');
 
 // Create - post
-router.post('/', (req, res) => {
-
+router.post('/:id', (req, res) => {
+    console.log(req.body)
+    Actions.insert(req.body).then(act => {
+        res.status(201).json(act);
+    })
 })
 // Read - get
 router.get('/:id', (req, res) => {
