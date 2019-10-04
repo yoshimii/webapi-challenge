@@ -17,6 +17,18 @@ router.get('/:id', (req, res) => {
     })
 })
 // Update - put
+router.put('/:id', (req, res) => {
+    const id = req.params.id;
+    const project = req.body;
+    Projects.get(id).then((old) => {
+        console.log(id, project)
+        Projects.update(id, project).then(proj => {
+            res.status(200).json({ updatedTo: proj, was: old })
+        })
+    })
+    
+})
+
 
 // Delete - delete
 router.delete('/:id', (req, res) => {
