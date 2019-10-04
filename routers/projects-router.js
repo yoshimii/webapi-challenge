@@ -17,12 +17,19 @@ router.get('/', (req, res) => {
 })
 
 // Read - get by id
-router.get('/:id', (req, res) => {
-    id = req.params.id;
-    Projects.get(id).then(project => {
+router.get('/:id', async (req, res) => {
+    const id = req.params.id;
+    try {
+        const project = await Projects.get(id)
+        if(project == null) {
+            next()
+        }
         res.status(200).json(project)
-    })
+    } catch (error) {
+        res.status(400).json({ error: "bad request" })
+    }
 })
+
 // Update - put
 router.put('/:id', (req, res) => {
     const id = req.params.id;
