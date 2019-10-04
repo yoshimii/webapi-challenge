@@ -25,14 +25,20 @@ In this challenge, create a web API around the following resources: `Projects` a
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] Mention two parts of Express that you learned about this week.
+1.	Express routing and middleware. 
 
 - [ ] Describe Middleware?
+2.	Middleware is a function that the request and response object then executes some code. Once it’s done it either ends the request-response cycle or it calls the next middleware function with the variable named next().
 
 - [ ] Describe a Resource?
+3.	A resource is anything available on the web. They are identified with the Uniform Resource Identifier. 
 
 - [ ] What can the API return to help clients know if a request was successful?
+4.	APIs can return status codes to determine If a request was successful. Some common ones when using CRUD operations are: 200 – Ok, 201 – Created, 204 – No Content, 400 – Bad Request, 404 – Not found.
 
 - [ ] How can we partition our application into sub-applications?
+
+5.	We can use express Router to partition our application into sub-applications. Router is a top-level object which creates a new router and it’s a way to create an express app which only contains Express’ middleware and routing functions. Once created you can add middleware and HTTP method routes (CRUD operations) to it.
 
 ## Project Setup
 
