@@ -19,7 +19,12 @@ router.get('/:id', (req, res) => {
 // Update - put
 
 // Delete - delete
-
+router.delete('/:id', (req, res) => {
+    id = req.params.id;
+    Projects.remove(id).then(projID => {
+        res.status(200).json(projID)
+    })
+})
 
 
 module.exports = router;
